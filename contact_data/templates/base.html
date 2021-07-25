@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+        Contact
+        {% endblock %}
+    </title>
+    <style type="text/css">
+      .errorlist {
+        margin: 0;
+        padding: 0;
+      }
+      .errorlist li {
+        list-style: none;
+        color: red;
+      }
+      .errorlist ~ input,
+      .errorlist ~ select {
+        border-color: red;
+      }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <a class="navbar-brand">Contact Person</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="col-md-12 well">
+            <h3 class="text-primary">Contact Us</h3>
+            <hr style="border-top:1px dotted #ccc"/>
+            {% block content %} {% endblock %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+    <table class="table">
+        <thead>
+            <a href="{% url 'add' %}" class="btn btn-primary btn-xs pull-right"><b>+</b>Add New Person</a>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Country</th>
+                <th>State</th>
+                <th>City</th>
+                <th class="text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for person in peoples %}
+            <tr>
+                <td><a href="{% url 'person_change' person.pk %}">{{person.name}}</a></td>
+                <td>{{person.email}}</td>
+                <td>{{person.contact}}</td>
+                <td>{{person.country.name}}</td>
+                <td>{{person.state.name}}</td>
+                <td>{{person.city.name}}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No of Person in the Table <a href="{% url 'add' %}">Add the first person</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
