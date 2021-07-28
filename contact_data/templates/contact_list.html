@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
 
-{% block title %}
+{% block head %}
+    {% load static %}
+    {% block title %}
+    {% endblock %}
+    <link type="text/css" href="{% static 'css/style.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
     <table class="table">
-        <thead>
-            <a href="{% url 'add' %}" class="btn btn-primary btn-xs pull-right"><b>+</b>Add New Person</a>
+        <thead class="header">
+            <a href="{% url 'add' %}" class="btn btn-primary btn-xs pull-right">&nbsp;<b>&nbsp; + &nbsp;</b>Add New Person &nbsp;
+            </a>
             <tr>
                 <th>Name</th>
                 <th>Email</th>
@@ -20,12 +25,16 @@
         <tbody>
             {% for person in peoples %}
             <tr>
-                <td><a href="{% url 'person_change' person.pk %}">{{person.name}}</a></td>
+                <td>{{person.name}}</td>
                 <td>{{person.email}}</td>
                 <td>{{person.contact}}</td>
                 <td>{{person.country.name}}</td>
                 <td>{{person.state.name}}</td>
                 <td>{{person.city.name}}</td>
+                <td>
+                    <button class="button"><a href="">Delete</a></button>
+                    <button class="button"><a href="{% url 'person_change' person.pk %}">Edit</a></button>
+                </td>
             </tr>
             {% empty %}
             <tr>
