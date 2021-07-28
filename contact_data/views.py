@@ -20,8 +20,8 @@ class PersonAddView(CreateView):
 class PersonUpdateView(UpdateView):
     model = ContactUs
     form_class = ContactForm
-    template_name =  'contact_form.html'
-    success_url = reverse_lazy('person_change')
+    template_name = 'contact_form.html'
+    success_url = reverse_lazy('contact')
 
 def load_cities(request):
     state_id = request.GET.get('state')
